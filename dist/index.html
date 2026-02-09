@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberNet Portfolio - Arthur Rambo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cyber: {
+                bg: 'var(--cyber-bg)',
+                surface: 'var(--cyber-surface)',
+                accent: 'var(--cyber-accent)',
+                orange: 'var(--cyber-secondary)',
+                violet: 'var(--cyber-violet)',
+                pink: '#ff85a1',
+                blue: '#4dbdff',
+                text: '#e2e8f0',
+                muted: '#94a3b8',
+                border: 'var(--cyber-border-color)',
+              }
+            },
+            fontFamily: {
+              mono: ['JetBrains Mono', 'monospace'],
+              cyber: ['Orbitron', 'sans-serif'],
+            },
+            animation: {
+              'trace-top': 'trace-top 4s linear infinite',
+              'trace-right': 'trace-right 4s linear infinite',
+              'trace-bottom': 'trace-bottom 4s linear infinite',
+              'trace-left': 'trace-left 4s linear infinite',
+              'crt-flicker': 'crt-flicker 0.15s infinite',
+              'scanline-move': 'scanline-move 8s linear infinite',
+              'border-pulse': 'border-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'grid-move': 'grid-move 20s linear infinite',
+              'text-reveal': 'text-reveal 0.1s steps(10, end)',
+              'pulse-fast': 'pulse 0.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            },
+            keyframes: {
+              'trace-top': {
+                '0%, 100%': { transform: 'scaleX(0)', 'transform-origin': 'left', opacity: 0 },
+                '0.1%, 24.9%': { transform: 'scaleX(1)', 'transform-origin': 'left', opacity: 1 },
+                '25%': { transform: 'scaleX(1)', 'transform-origin': 'right', opacity: 1 },
+                '25.1%, 49.9%': { transform: 'scaleX(0)', 'transform-origin': 'right', opacity: 1 },
+              },
+              'trace-right': {
+                '0%, 25%': { transform: 'scaleY(0)', 'transform-origin': 'top', opacity: 0 },
+                '25.1%, 49.9%': { transform: 'scaleY(1)', 'transform-origin': 'top', opacity: 1 },
+                '50%': { transform: 'scaleY(1)', 'transform-origin': 'top', opacity: 1 },
+                '50.1%, 74.9%': { transform: 'scaleY(0)', 'transform-origin': 'top', opacity: 1 },
+              },
+              'trace-bottom': {
+                '0%, 50%': { transform: 'scaleX(0)', 'transform-origin': 'right', opacity: 0 },
+                '50.1%, 74.9%': { transform: 'scaleX(1)', 'transform-origin': 'right', opacity: 1 },
+                '75%': { transform: 'scaleX(1)', 'transform-origin': 'right', opacity: 1 },
+                '75.1%, 99.9%': { transform: 'scaleX(0)', 'transform-origin': 'right', opacity: 1 },
+              },
+              'trace-left': {
+                '0%, 75%': { transform: 'scaleY(0)', 'transform-origin': 'bottom', opacity: 0 },
+                '75.1%, 99.9%': { transform: 'scaleY(1)', 'transform-origin': 'bottom', opacity: 1 },
+                '100%': { transform: 'scaleY(1)', 'transform-origin': 'bottom', opacity: 1 },
+              },
+              'crt-flicker': {
+                '0%': { opacity: '0.97' },
+                '5%': { opacity: '0.93' },
+                '10%': { opacity: '0.98' },
+                '15%': { opacity: '0.94' },
+                '20%': { opacity: '0.99' },
+                '25%': { opacity: '0.92' },
+                '30%': { opacity: '1' },
+                '100%': { opacity: '0.98' },
+              },
+              'scanline-move': {
+                '0%': { transform: 'translateY(-100%)' },
+                '100%': { transform: 'translateY(100%)' },
+              },
+              'border-pulse': {
+                '0%, 100%': { 
+                  'border-color': 'rgba(var(--cyber-accent-rgb), 0.3)',
+                  'box-shadow': '0 0 5px rgba(var(--cyber-accent-rgb), 0.1)'
+                },
+                '50%': { 
+                  'border-color': 'rgba(var(--cyber-accent-rgb), 0.8)',
+                  'box-shadow': '0 0 20px rgba(var(--cyber-accent-rgb), 0.4)'
+                }
+              },
+              'grid-move': {
+                '0%': { 'background-position': '0 0' },
+                '100%': { 'background-position': '100px 100px' }
+              },
+              'text-reveal': {
+                'from': { width: '0' },
+                'to': { width: '100%' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        /* Default Theme: Cyan / Orange */
+        --cyber-bg: #05070a;
+        --cyber-surface: #0d1117;
+        --cyber-accent: #00f3ff;
+        --cyber-accent-rgb: 0, 243, 255;
+        --cyber-secondary: #ff9d6e;
+        --cyber-secondary-rgb: 255, 157, 110;
+        --cyber-violet: #e0b0ff;
+        --cyber-border-color: #1e293b;
+      }
+
+      [data-theme='matrix'] {
+        --cyber-accent: #00ff41;
+        --cyber-accent-rgb: 0, 255, 65;
+        --cyber-secondary: #10b981;
+        --cyber-secondary-rgb: 16, 185, 129;
+        --cyber-violet: #84cc16;
+      }
+
+      [data-theme='vaporwave'] {
+        --cyber-accent: #ff00ff;
+        --cyber-accent-rgb: 255, 0, 255;
+        --cyber-secondary: #7000ff;
+        --cyber-secondary-rgb: 112, 0, 255;
+        --cyber-violet: #f472b6;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        transition: background-color 0.5s ease;
+      }
+      body {
+        background-color: var(--cyber-bg);
+        color: #e2e8f0;
+        margin: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        min-height: 100vh;
+        width: 100vw;
+      }
+      .cyber-border {
+        clip-path: polygon(
+          0 0, 
+          calc(100% - 15px) 0, 
+          100% 15px, 
+          100% 100%, 
+          15px 100%, 
+          0 calc(100% - 15px)
+        );
+      }
+      
+      .crt-effect {
+        position: relative;
+        overflow: hidden;
+      }
+      .crt-effect::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.1) 0px,
+          rgba(0, 0, 0, 0.1) 1px,
+          transparent 1px,
+          transparent 2px
+        );
+        pointer-events: none;
+        z-index: 20;
+      }
+      .crt-effect::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.1);
+        opacity: 0.3;
+        width: 100%;
+        animation: scanline-move 6s linear infinite;
+        pointer-events: none;
+        z-index: 21;
+      }
+
+      @keyframes glitch-violet {
+        0%, 100% { transform: skew(0deg); text-shadow: 0 0 5px var(--cyber-violet); }
+        20% { transform: skew(2deg); text-shadow: -2px 0 var(--cyber-secondary), 1px 0 var(--cyber-accent); }
+        40% { transform: skew(-2deg); text-shadow: 2px 0 var(--cyber-accent), -1px 0 var(--cyber-secondary); }
+        60% { transform: skew(1deg); text-shadow: 1px 0 var(--cyber-violet), -1px 0 var(--cyber-accent); }
+        80% { transform: skew(-1deg); text-shadow: -1px 0 var(--cyber-secondary), 1px 0 var(--cyber-violet); }
+      }
+
+      .animate-glitch-violet {
+        animation: glitch-violet 4s ease-in-out infinite alternate;
+      }
+
+      .scanline {
+        position: relative;
+        overflow: hidden;
+      }
+      .scanline::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(var(--cyber-accent-rgb), 0.05) 0px,
+          rgba(var(--cyber-accent-rgb), 0.05) 1px,
+          transparent 1px,
+          transparent 2px
+        );
+        pointer-events: none;
+      }
+
+      .glow-accent { box-shadow: 0 0 15px rgba(var(--cyber-accent-rgb), 0.2); border-color: rgba(var(--cyber-accent-rgb), 0.3); }
+      .glow-orange { box-shadow: 0 0 15px rgba(var(--cyber-secondary-rgb), 0.2); border-color: rgba(var(--cyber-secondary-rgb), 0.3); }
+
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: var(--cyber-bg); }
+      ::-webkit-scrollbar-thumb { 
+        background: #1e293b; 
+        border-radius: 0px;
+        box-shadow: inset 0 0 5px rgba(var(--cyber-accent-rgb), 0.2);
+      }
+      ::-webkit-scrollbar-thumb:hover { background: var(--cyber-accent); }
+
+      .moving-grid {
+        background-image: 
+          linear-gradient(to right, rgba(var(--cyber-accent-rgb), 0.1) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(var(--cyber-accent-rgb), 0.1) 1px, transparent 1px);
+        background-size: 50px 50px;
+        animation: grid-move 20s linear infinite;
+        perspective: 1000px;
+        transform: rotateX(45deg);
+        transform-origin: top;
+      }
+
+      .loading-bar-fill {
+        transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-BQ-J5Mn4.js"></script>
+</head>
+  <body>
+    <div id="root"></div>
+</body>
+</html>
