@@ -6,7 +6,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
 
   return {
-    base: '/about-me-art__/',   // ← THIS IS THE FIX
+    base: '/',
 
     server: {
       port: 3000,
