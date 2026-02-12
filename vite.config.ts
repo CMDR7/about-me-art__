@@ -4,9 +4,11 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
+  const isProduction = mode === 'production';
 
   return {
-    base: '/',
+    // Use relative asset paths in production so GitHub Pages works even if repo name/path changes.
+    base: isProduction ? './' : '/',
 
     server: {
       port: 3000,
